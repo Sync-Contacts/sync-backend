@@ -4,7 +4,8 @@
   "description": "An API to store contact info",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "configure": "./bin/configuredb.sh"
   },
   "author": "joel-oe-lacey",
   "license": "ISC",
