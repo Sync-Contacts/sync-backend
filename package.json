@@ -2,10 +2,12 @@
   "name": "sync-contact-rest",
   "version": "1.0.0",
   "description": "An API to store contact info",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "configure": "./bin/configuredb.sh"
+    "configure": "./bin/configuredb.sh",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "author": "joel-oe-lacey",
   "license": "ISC",
