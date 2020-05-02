@@ -11,6 +11,17 @@ app.get('/users', (request, response, next) => {
     });
 });
 
+//return all contacts by user
+app.get('/contacts/:id', (request, response, next) => {
+    const { id } = request.params;
+
+    pool.query('SELECT * FROM Contacts WHERE linked_user_id = $1', [id], (err, resp) => {
+        if (err) return next(err);
+
+        response.json(resp.rows)
+    });
+});
+
 app.use((err, request, response, next) => {
     response.json(err)
 })
