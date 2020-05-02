@@ -2,12 +2,17 @@ const express = require("express");
 const app = express();
 const pool = require('./db')
 
-app.get('/users', (request, response) => {
+//next is passing along to next piece of middlewear to handle whatever you send it
+app.get('/users', (request, response, next) => {
     pool.query('SELECT * FROM AppUsers', (err, resp) => {
-        if (err) return console.log(err);
+        if (err) return next(err);
 
-        console.log(resp.rows)
+        response.json(resp.rows)
     });
 });
+
+app.use((err, request, response, next) => {
+    response.json(err)
+})
 
 module.exports = app;
