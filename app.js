@@ -22,6 +22,19 @@ app.get('/contacts/:id', (request, response, next) => {
     });
 });
 
+//return all topics by contact ID 
+app.get('/topics/:id', (request, response, next) => {
+    const { id } = request.params;
+
+    pool.query('SELECT * FROM Topics WHERE contact_id = $1', [id], (err, resp) => {
+        if (err) return next(err);
+
+        response.json(resp.rows)
+    });
+});
+
+//going to need to joins for tags
+
 app.use((err, request, response, next) => {
     response.json(err)
 })
